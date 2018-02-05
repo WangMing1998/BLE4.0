@@ -93,6 +93,7 @@
  @param options    Connecting peripherals parameter Settings
  */
 -(void)connectWitpPeripheral:(WMBLEPeripheral *)peripheral options:(NSDictionary *)options{
+    if(peripheral == nil)return;
     [self.centeralManager connectPeripheral:peripheral.blePeripheral options:options];
     [self startTimer];
 }
@@ -104,6 +105,7 @@
  @param peripheral Need to disconnect peripherals
  */
 -(void)disconnectWithPeripheral:(WMBLEPeripheral *)peripheral{
+    if(peripheral == nil)return;
     [self.centeralManager cancelPeripheralConnection:peripheral.blePeripheral];
 }
 
@@ -120,6 +122,7 @@
  @param peripheral The custom of bluetooth peripherals
  */
 -(void)addNeedReconnectPeripheral:(WMBLEPeripheral *)peripheral{
+    if(peripheral == nil)return;
     if(![self.reConnectPeripherals containsObject:peripheral]){
         [self.reConnectPeripherals addObject:peripheral];
     }
@@ -236,6 +239,7 @@
             NSString *localName=[advertisementData valueForKeyPath:CBAdvertisementDataLocalNameKey];
             WMLog(@"localName:%@\r\nperipheral.name:%@",localName,peripheral.name);//  local的正确获取方法
             WMBLEPeripheral *per = [WMBLEPeripheral peripheralWithCBPeripheral:peripheral deviceLocalName:localName];
+            per.RSSI = RSSI;
             if(![self.discoverPeripherals containsObject:per]){
                 [self.discoverPeripherals addObject:per];
                 WMLog(@"discoverPeripherals:%@",self.discoverPeripherals);
@@ -255,11 +259,13 @@
 -(void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral{
     peripheral.delegate = self;
     [self stopTimer];
-    NSDictionary *dic = @{CENTRALKEY:central,PERIPHERALKEY:peripheral};
-    [kNotificationCenter postNotificationName:BLENotificationDidConnectPeripheral object:dic];
-    WMLog(@"-->成功连接到名称为:%@的设备",peripheral.name);
     // 停止连接计时
     WMBLEPeripheral *per = [WMBLEPeripheral peripheralWithCBPeripheral:peripheral];
+    NSDictionary *dic = @{CENTRALKEY:central,PERIPHERALKEY:per};
+    
+    [kNotificationCenter postNotificationName:BLENotificationDidConnectPeripheral object:dic];
+    WMLog(@"-->成功连接到名称为:%@的设备",peripheral.name);
+ 
     if(![self.connectedPeripherals containsObject:per]){
         [self.connectedPeripherals addObject:per];
     }
@@ -277,7 +283,8 @@ Fail connected peripherals
         WMLog(@"-->didFailToConnectPeripheral error:%@",error);
         
     }
-    NSDictionary *dic = @{CENTRALKEY:central,PERIPHERALKEY:peripheral,ERRORKEY:error?error:@""};
+    WMBLEPeripheral *per = [WMBLEPeripheral peripheralWithCBPeripheral:peripheral];
+    NSDictionary *dic = @{CENTRALKEY:central,PERIPHERALKEY:per,ERRORKEY:error?error:@""};
     [kNotificationCenter postNotificationName:BLENotificationDidFailToConnectPeripheral object:dic];
     WMLog(@"-->连接失败名称为:%@的设备",peripheral.name);
 }
@@ -291,10 +298,11 @@ Fail connected peripherals
     if(error){
         WMLog(@"-->didDisconnectPeripheral error:%@",error)
     }
-    NSDictionary *dic = @{CENTRALKEY:central,PERIPHERALKEY:peripheral,ERRORKEY:error?error:@""};
+    WMBLEPeripheral *per = [WMBLEPeripheral peripheralWithCBPeripheral:peripheral];
+    NSDictionary *dic = @{CENTRALKEY:central,PERIPHERALKEY:per,ERRORKEY:error?error:@""};
     [kNotificationCenter postNotificationName:BLENotificationDidDisconnectPeripheral object:dic];
     WMLog(@"-->断开连接名称为:%@的设备",peripheral.name);
-    WMBLEPeripheral *per = [WMBLEPeripheral peripheralWithCBPeripheral:peripheral];
+    
     if([self.connectedPeripherals containsObject:per]){
         [self.connectedPeripherals removeObject:per];
     }
@@ -317,7 +325,8 @@ Fail connected peripherals
     if(error){
         WMLog(@"-->peripheral.name:%@\n-->didDiscoverServices error:%@",peripheral.name,error)
     }
-    NSDictionary *dic = @{PERIPHERALKEY:peripheral,SERVICEKEY:peripheral.services,ERRORKEY:error?error:@""};
+    WMBLEPeripheral *per = [WMBLEPeripheral peripheralWithCBPeripheral:peripheral];
+    NSDictionary *dic = @{PERIPHERALKEY:per,SERVICEKEY:peripheral.services,ERRORKEY:error?error:@""};
     [kNotificationCenter postNotificationName:BLENotificationDidDiscoverServices object:dic];
     
     for (CBService *service in peripheral.services) {
@@ -377,8 +386,8 @@ Fail connected peripherals
  */
 -(void)peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error{
     if(error){
-     
-        NSDictionary *dic = @{PERIPHERALKEY:peripheral,CHARACTERISTICKEY:characteristic,ERRORKEY:error?error:@""};
+        WMBLEPeripheral *per = [WMBLEPeripheral peripheralWithCBPeripheral:peripheral];
+        NSDictionary *dic = @{PERIPHERALKEY:per,CHARACTERISTICKEY:characteristic,ERRORKEY:error?error:@""};
         [kNotificationCenter postNotificationName:BLENotificationDidUpdateNotificationStateForCharacteristic object:dic];
         WMLog(@"-->setting characteristic Notify fail:%@",error)
     }
@@ -395,7 +404,8 @@ Receive Data form hardwava
     if(error){
         WMLog(@"-->didUpdateValueForCharacteristic error:%@",error);
     }
-    NSDictionary *dic = @{PERIPHERALKEY:peripheral,CHARACTERISTICKEY:characteristic,ERRORKEY:error?error:@""};
+    WMBLEPeripheral *per = [WMBLEPeripheral peripheralWithCBPeripheral:peripheral];
+    NSDictionary *dic = @{PERIPHERALKEY:per,CHARACTERISTICKEY:characteristic,ERRORKEY:error?error:@""};
     [kNotificationCenter postNotificationName:BLENotificationDidUpdateValueForCharacteristic object:dic];
 }
 
@@ -408,11 +418,13 @@ Receive Data form hardwava
  */
 -(void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error{
     NSDictionary *dic = nil;
+    WMBLEPeripheral *per = [WMBLEPeripheral peripheralWithCBPeripheral:peripheral];
     if(error){
+        
         WMLog(@"-->didWriteValueForCharacteristic error:%@",error);
-        dic = @{PERIPHERALKEY:peripheral,CHARACTERISTICKEY:characteristic,ERRORKEY:WM_ERROR(WMCentralErrorWriteDataError)};
+        dic = @{PERIPHERALKEY:per,CHARACTERISTICKEY:characteristic,ERRORKEY:WM_ERROR(WMCentralErrorWriteDataError)};
     }else{
-        dic = @{PERIPHERALKEY:peripheral,CHARACTERISTICKEY:characteristic,ERRORKEY:error?error:@""};
+        dic = @{PERIPHERALKEY:per,CHARACTERISTICKEY:characteristic,ERRORKEY:error?error:@""};
     }
     [kNotificationCenter postNotificationName:BLENotificationDidWriteValueForCharacteristic object:dic];
 }
@@ -422,7 +434,8 @@ Receive Data form hardwava
     if(error){
         WMLog(@"-->peripheralDidUpdateRSSI error%@",error);
     }
-    NSDictionary *dic = @{PERIPHERALKEY:peripheral,RSSIKEY:RSSI?RSSI:@0,ERRORKEY:error?error:@""}
+    WMBLEPeripheral *per = [WMBLEPeripheral peripheralWithCBPeripheral:peripheral];
+    NSDictionary *dic = @{PERIPHERALKEY:per,RSSIKEY:RSSI?RSSI:@0,ERRORKEY:error?error:@""}
     [kNotificationCenter postNotificationName:BLENotificationDidReadRSSI object:dic];
 }
 #else
@@ -430,7 +443,8 @@ Receive Data form hardwava
     if(error){
         WMLog(@"-->peripheralDidUpdateRSSI error%@",error);
     }
-    NSDictionary *dic = @{PERIPHERALKEY:peripheral,RSSIKEY:RSSI?RSSI:@0,ERRORKEY:error?error:@""};
+    WMBLEPeripheral *per = [WMBLEPeripheral peripheralWithCBPeripheral:peripheral];
+    NSDictionary *dic = @{PERIPHERALKEY:per,RSSIKEY:RSSI?RSSI:@0,ERRORKEY:error?error:@""};
     [kNotificationCenter postNotificationName:BLENotificationDidReadRSSI object:dic];
 }
 #endif

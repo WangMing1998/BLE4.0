@@ -17,6 +17,7 @@
     }else{
         per.blePeripheralName = peripheral.name;
     }
+    per.severices = peripheral.services.count;
     return per;
     
 }
@@ -26,12 +27,16 @@
     per.blePeripheral = peripheral;
     per.bleIdentifier = peripheral.identifier;
     if(localName == nil || localName.length == 0){
-        per.blePeripheralName = @"BLEDevice";
         per.bleLocalName = @"BLEDevice";
     }else{
-        per.blePeripheralName = peripheral.name;
         per.bleLocalName = localName;
     }
+    if(peripheral.name == nil || peripheral.name.length == 0){
+        per.blePeripheralName = @"BLEDevice";
+    }else{
+        per.blePeripheralName = peripheral.name;
+    }
+    per.severices = peripheral.services.count;
     return per;
 }
 

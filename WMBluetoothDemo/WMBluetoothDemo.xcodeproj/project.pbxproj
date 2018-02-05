@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8203579B202801CA008BA7F3 /* DeviceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8203579A202801CA008BA7F3 /* DeviceCell.m */; };
+		8203579E20282CFD008BA7F3 /* BLEDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8203579D20282CFD008BA7F3 /* BLEDetailVC.m */; };
 		82A7D4691FF4D2A000597500 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A7D4681FF4D2A000597500 /* AppDelegate.m */; };
 		82A7D46C1FF4D2A000597500 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A7D46B1FF4D2A000597500 /* ViewController.m */; };
 		82A7D46F1FF4D2A000597500 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82A7D46D1FF4D2A000597500 /* Main.storyboard */; };
@@ -38,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		82035799202801CA008BA7F3 /* DeviceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceCell.h; sourceTree = "<group>"; };
+		8203579A202801CA008BA7F3 /* DeviceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceCell.m; sourceTree = "<group>"; };
+		8203579C20282CFD008BA7F3 /* BLEDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLEDetailVC.h; sourceTree = "<group>"; };
+		8203579D20282CFD008BA7F3 /* BLEDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLEDetailVC.m; sourceTree = "<group>"; };
 		82A7D4641FF4D2A000597500 /* WMBluetoothDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WMBluetoothDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82A7D4671FF4D2A000597500 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		82A7D4681FF4D2A000597500 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -115,6 +121,10 @@
 				82A7D4681FF4D2A000597500 /* AppDelegate.m */,
 				82A7D46A1FF4D2A000597500 /* ViewController.h */,
 				82A7D46B1FF4D2A000597500 /* ViewController.m */,
+				8203579C20282CFD008BA7F3 /* BLEDetailVC.h */,
+				8203579D20282CFD008BA7F3 /* BLEDetailVC.m */,
+				82035799202801CA008BA7F3 /* DeviceCell.h */,
+				8203579A202801CA008BA7F3 /* DeviceCell.m */,
 				82A7D49C1FF4D58300597500 /* WMBLEDefine.h */,
 				82A7D4A01FF61B8600597500 /* WMBLETool.h */,
 				82A7D4A11FF61B8600597500 /* WMBLETool.m */,
@@ -289,10 +299,12 @@
 			files = (
 				82A7D46C1FF4D2A000597500 /* ViewController.m in Sources */,
 				82A7D4771FF4D2A000597500 /* main.m in Sources */,
+				8203579B202801CA008BA7F3 /* DeviceCell.m in Sources */,
 				82A7D4691FF4D2A000597500 /* AppDelegate.m in Sources */,
 				82A7D49B1FF4D2E300597500 /* WMBLECentralManager.m in Sources */,
 				82A7D49F1FF4E34B00597500 /* WMBLEPeripheral.m in Sources */,
 				82A7D4A21FF61B8600597500 /* WMBLETool.m in Sources */,
+				8203579E20282CFD008BA7F3 /* BLEDetailVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

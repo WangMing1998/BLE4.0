@@ -25,6 +25,9 @@
 @property(nonatomic,assign) BOOL    bleConnected;
 // 写数据特征
 @property(nonatomic,strong) CBCharacteristic *writeCharacteristic;
+// 服务数
+@property(nonatomic,assign) NSInteger severices;
+@property(nonatomic,strong) NSNumber *RSSI;
 + (instancetype)peripheralWithCBPeripheral:(CBPeripheral *)cbPeripheral;
 + (instancetype)peripheralWithCBPeripheral:(CBPeripheral *)cbPeripheral deviceLocalName:(NSString *)localName;
 @end
