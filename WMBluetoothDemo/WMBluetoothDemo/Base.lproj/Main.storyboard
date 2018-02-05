@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7z-uh-54y">
+                                <rect key="frame" x="0.0" y="100" width="375" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.30484438959999999" blue="0.1725041242" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="N0f-96-An0"/>
+                                </constraints>
+                                <state key="normal" title="扫描"/>
+                                <state key="selected" title="停止扫描"/>
+                                <connections>
+                                    <action selector="scanButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HEM-de-G9f"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2vU-w3-k37">
+                                <rect key="frame" x="0.0" y="150" width="375" height="50"/>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.91372549020000005" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="连接"/>
+                                <state key="selected" title="断开连接"/>
+                                <connections>
+                                    <action selector="connectButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DoJ-ox-Dus"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="2vU-w3-k37" firstAttribute="trailing" secondItem="h7z-uh-54y" secondAttribute="trailing" id="6tz-r9-a4w"/>
+                            <constraint firstItem="h7z-uh-54y" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="100" id="J0p-Qw-azx"/>
+                            <constraint firstItem="2vU-w3-k37" firstAttribute="top" secondItem="h7z-uh-54y" secondAttribute="bottom" id="V7n-QA-0om"/>
+                            <constraint firstItem="2vU-w3-k37" firstAttribute="leading" secondItem="h7z-uh-54y" secondAttribute="leading" id="WrD-6X-XRa"/>
+                            <constraint firstAttribute="trailing" secondItem="h7z-uh-54y" secondAttribute="trailing" id="lfJ-fI-awm"/>
+                            <constraint firstItem="h7z-uh-54y" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xWL-bc-YZX"/>
+                            <constraint firstItem="2vU-w3-k37" firstAttribute="height" secondItem="h7z-uh-54y" secondAttribute="height" id="xp2-X9-RIa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="connectButton" destination="2vU-w3-k37" id="NBM-Ko-DAW"/>
+                        <outlet property="scanButton" destination="h7z-uh-54y" id="RYB-2n-YdP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
