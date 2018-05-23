@@ -1,14 +1,4 @@
-    // 设置过滤规则，此处以设备名称过滤
-    [self.bleManager setBleFiliterPeralsRuleBlock:^BOOL(NSString *peripheralName, NSDictionary *advertisementData, NSNumber *RSSI) {
-        //以设备名称过滤
-//        if([peripheralName isEqualToString:@"Aiture-23B47C"]){
-//            return YES;
-//        }else{
-//            return NO;
-//        }
-        // 如不需要设置，return YES；
-        return YES;
-    }];
+
 // 连接成功
 [XDBLETool shareInstance].bleConnectedPeripheralBlock = ^(CBCentralManager *central, XDBLEPeripheral *peripheral) {
         NSLog(@"连接成功");
