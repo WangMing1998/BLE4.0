@@ -30,6 +30,8 @@
         __weak typeof(self) weakSelf = self;
         self.bleManager = [XDBLECentralManager shareInstance];
         [self listeningNotifications];
+        self.disCoverPeripherals = [NSMutableArray array];
+        self.connectedPeripherals = [NSMutableArray array];
         [self.bleManager setFilteronDiscocer:^BOOL(NSString *peripheralName, NSDictionary *advertisementData, NSNumber *RSSI) {
             if(weakSelf.bleFiliterPeralsRuleBlock){
                 if(weakSelf.bleFiliterPeralsRuleBlock(peripheralName, advertisementData, RSSI)){
@@ -46,6 +48,7 @@
 }
 
 -(void)startScanWithServices:(NSArray<CBUUID *> *)services options:(NSDictionary *)options{
+    [self.disCoverPeripherals removeAllObjects];
     [self.bleManager startScanWithServices:services options:nil];
 }
 
@@ -59,6 +62,7 @@
 }
 
 -(void)disconnectWithPeripheral:(XDBLEPeripheral *)peripheral{
+    [self.connectedPeripherals removeObject:peripheral];
     [self.bleManager  disconnectWithPeripheral:peripheral];
 }
 
@@ -72,6 +76,36 @@
     
     // 硬件状态发生变化通知
     [kNotificationCenter addObserverForName:BLENotificationCentralManagerDidUpdateState object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
+        CBCentralManager *central = note.object;
+        if (@available(iOS 10.0, *)) {
+            if(central.state == CBManagerStatePoweredOff){
+                self.bleState = blePoweredOff;
+            }else if(central.state == CBManagerStatePoweredOn){
+                self.bleState = blePoweredOn;
+            }else if(central.state == CBManagerStateUnknown){
+                self.bleState = bleUnknown;
+            }else if(central.state == CBManagerStateUnsupported){
+                self.bleState = bleUnsupported;
+            }else if(central.state == CBManagerStateUnauthorized){
+                self.bleState = bleUnauthorized;
+            }else if (central.state == CBManagerStateResetting){
+                self.bleState = bleResetting;
+            }
+        } else {
+            if(central.state == CBCentralManagerStatePoweredOff){
+                self.bleState = blePoweredOff;
+            }else if(central.state == CBCentralManagerStatePoweredOn){
+                self.bleState = blePoweredOn;
+            }else if(central.state == CBCentralManagerStateUnknown){
+                self.bleState = bleUnknown;
+            }else if(central.state == CBCentralManagerStateUnsupported){
+                self.bleState = bleUnsupported;
+            }else if(central.state == CBCentralManagerStateUnauthorized){
+                self.bleState = bleUnauthorized;
+            }else if (central.state == CBCentralManagerStateResetting){
+                self.bleState = bleResetting;
+            }
+        }
         if(self.bleDidUpdateStateBlock){
             self.bleDidUpdateStateBlock(note.object);
         }
@@ -84,6 +118,9 @@
         XDBLEPeripheral *per = dic[PERIPHERALKEY];
         NSNumber *RSSI = dic[RSSIKEY];
         NSDictionary *avdertisementData = dic[@"advertisementData"];
+        if(![self.disCoverPeripherals containsObject:per]){
+            [self.disCoverPeripherals addObject:per];
+        }
         if(self.bleDiscoverPeripheralsBlock){
             self.bleDiscoverPeripheralsBlock(central,per, avdertisementData,RSSI);
         }
@@ -94,6 +131,9 @@
         NSDictionary *dic = note.object;
         CBCentralManager *central = dic[CENTRALKEY];
         XDBLEPeripheral *per = dic[PERIPHERALKEY];
+        if(![self.connectedPeripherals containsObject:per]){
+            [self.connectedPeripherals addObject:per];
+        }
         if(self.bleConnectedPeripheralBlock){
             self.bleConnectedPeripheralBlock(central,per);
         }
@@ -145,7 +185,7 @@
             self.bleDiscoverCharacteristicsBlock(per,service,error);
         }
     }];
- 
+    
 
     // 接受到特征的数据
     [kNotificationCenter addObserverForName:BLENotificationDidUpdateValueForCharacteristic object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
@@ -192,6 +232,8 @@
             self.bleDidReadRSSIBlock(per,bleRssi,error);
         }
     }];
+    
+    
 }
 
 -(void)sendBuffer:(NSData *)data

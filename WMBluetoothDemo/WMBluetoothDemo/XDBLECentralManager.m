@@ -37,8 +37,7 @@
     self = [super init];
     if(self){
 #if __IPHONE_OS_VERSION_MIN_REQUIRED > __IPHONE_6_0
-        NSDictionary *options = @{CBCentralManagerOptionShowPowerAlertKey:@(OPEN_BLE_ALERTVIEW),
-                                  CBCentralManagerOptionRestoreIdentifierKey:@"WMBluetoothRestore"
+        NSDictionary *options = @{CBCentralManagerOptionShowPowerAlertKey:@(OPEN_BLE_ALERTVIEW)
                                   };
 #else
         NSDictionary *options = nil;
@@ -156,10 +155,6 @@ characteristicType:(CBCharacteristicWriteType)type{
     
 }
 
-#pragma mark - CBCentralManagerDelegate委托方法
--(void)centralManager:(CBCentralManager *)central willRestoreState:(NSDictionary<NSString *,id> *)dict{
-    
-}
 
 /**
  蓝牙状态更新回调

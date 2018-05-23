@@ -71,7 +71,7 @@
             self.connectStatus.text = @"disConnected";
             CGFloat rate =  ((self.subDataOffset*1.0)/1000)/self.timeCount;
             self.currentProgress.text = [NSString stringWithFormat:@"%.2f%%",(self.subDataOffset * 1.0/self.sendData.length) * 100];
-            self.currentRate.text = [NSString stringWithFormat:@"%.2fkb/s",rate];
+            self.currentRate.text = [NSString stringWithFormat:@"%.2fKb/s",rate];
             self.sendFishTime.text = [self getCurrentTIme];
             self.subDataOffset = 0;
             [self stopTimer];
@@ -109,7 +109,7 @@
                CGFloat rate =  ((self.subDataOffset*1.0)/1000)/self.timeCount;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     self.currentProgress.text = [NSString stringWithFormat:@"%.2f%%",(self.subDataOffset * 1.0/self.sendData.length) * 100];
-                    self.currentRate.text = [NSString stringWithFormat:@"%.2fkb/s",rate];
+                    self.currentRate.text = [NSString stringWithFormat:@"%.2fKb/s",rate];
                     self.sendFishTime.text = [self getCurrentTIme];
                     self.subDataOffset = 0;
                     [self stopTimer];
@@ -122,7 +122,7 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     CGFloat rate =  ((self.sendData.length*1.0)/1000)/self.timeCount;
                     self.currentProgress.text = @"100%";
-                    self.currentRate.text = [NSString stringWithFormat:@"%.2fkb/s",rate];
+                    self.currentRate.text = [NSString stringWithFormat:@"%.2fKb/s",rate];
                     self.sendFishTime.text = [self getCurrentTIme];
                     self.subDataOffset = 0;
                     [self stopTimer];
@@ -268,7 +268,7 @@
         CGFloat rate =  ((self.subDataOffset*1.0)/1000)/self.timeCount;
         dispatch_async(dispatch_get_main_queue(), ^{
             self.currentProgress.text = [NSString stringWithFormat:@"%.2f%%",(self.subDataOffset * 1.0/self.sendData.length) * 100];
-            self.currentRate.text = [NSString stringWithFormat:@"%.2fkb/s",rate];
+            self.currentRate.text = [NSString stringWithFormat:@"%.2fKb/s",rate];
             self.sendFishTime.text = [self getCurrentTIme];
             self.subDataOffset = 0;
             [self stopTimer];
@@ -282,7 +282,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             CGFloat rate =  ((self.sendData.length*1.0)/1000)/self.timeCount;
             self.currentProgress.text = @"100%";
-            self.currentRate.text = [NSString stringWithFormat:@"%.2fkb/s",rate];
+            self.currentRate.text = [NSString stringWithFormat:@"%.2fKb/s",rate];
             self.sendFishTime.text = [self getCurrentTIme];
             self.subDataOffset = 0;
             [self stopTimer];
@@ -327,7 +327,7 @@
     self.timeCount++;
     dispatch_async(dispatch_get_main_queue(), ^{
         CGFloat rate = (self.subDataOffset/1000.0)/self.timeCount;
-        self.currentRate.text = [NSString stringWithFormat:@"%.2fkb/s",rate];
+        self.currentRate.text = [NSString stringWithFormat:@"%.2fKb/s",rate];
         self.sendTimeCount.text = [NSString stringWithFormat:@"%ld s",self.timeCount];
     });
    

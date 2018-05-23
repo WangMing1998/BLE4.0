@@ -12,9 +12,9 @@
 #import "XDBLEPeripheral.h"
 #import "XDBLECentralManager.h"
 #define kNotificationCenter [NSNotificationCenter defaultCenter]
-#define OPEN_BLE_ALERTVIEW 1
-#define SHOW_LOG 1
-#define BLECENTRALTOOLTIMEOUT 60
+#define OPEN_BLE_ALERTVIEW 1  // 蓝牙关闭时启动app是否显示系统提示弹窗
+#define SHOW_LOG 1// 是否打印日志
+#define BLECENTRALTOOLTIMEOUT 60// 连接超时时间/s
 #define WM_ERROR(description) [NSError errorWithDomain:@"com.wangming.XDBLElabiary" code:0 userInfo:@{NSLocalizedDescriptionKey:description}]
 
 #define CENTRALKEY        @"CentralKey"
@@ -66,6 +66,5 @@ typedef void (^XDBLEReadValueForDescriptorsBlock)(XDBLEPeripheral *peripheral,CB
 #define BLENotificationDidUpdateNotificationStateForCharacteristic @"BLENotificationDidUpdateNotificationStateForCharacteristic"
 #define BLENotificationDidReadRSSI @"BLENotificationDidReadRSSI"
 #define BLENotificationWriteDataError @"BLENotificationWriteDataError"
-#define BLENotificationWriteDataFinish @"BLENotificationWriteDataFinish"
 #define WMLog(fmt, ...) if(SHOW_LOG) { NSLog(fmt,##__VA_ARGS__); }
 #endif /* XDBLEDefine_h */
