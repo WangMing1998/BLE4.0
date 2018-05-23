@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8203579B202801CA008BA7F3 /* DeviceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8203579A202801CA008BA7F3 /* DeviceCell.m */; };
 		8203579E20282CFD008BA7F3 /* BLEDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8203579D20282CFD008BA7F3 /* BLEDetailVC.m */; };
+		828CC3FD20AEBF3300ACB516 /* BLE4_2speed.BIN in Resources */ = {isa = PBXBuildFile; fileRef = 828CC3FC20AEBF3200ACB516 /* BLE4_2speed.BIN */; };
 		82A7D4691FF4D2A000597500 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A7D4681FF4D2A000597500 /* AppDelegate.m */; };
 		82A7D46C1FF4D2A000597500 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A7D46B1FF4D2A000597500 /* ViewController.m */; };
 		82A7D46F1FF4D2A000597500 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82A7D46D1FF4D2A000597500 /* Main.storyboard */; };
@@ -17,9 +18,9 @@
 		82A7D4771FF4D2A000597500 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A7D4761FF4D2A000597500 /* main.m */; };
 		82A7D4811FF4D2A000597500 /* WMBluetoothDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A7D4801FF4D2A000597500 /* WMBluetoothDemoTests.m */; };
 		82A7D48C1FF4D2A000597500 /* WMBluetoothDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A7D48B1FF4D2A000597500 /* WMBluetoothDemoUITests.m */; };
-		82A7D49B1FF4D2E300597500 /* WMBLECentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A7D49A1FF4D2E300597500 /* WMBLECentralManager.m */; };
-		82A7D49F1FF4E34B00597500 /* WMBLEPeripheral.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A7D49E1FF4E34B00597500 /* WMBLEPeripheral.m */; };
-		82A7D4A21FF61B8600597500 /* WMBLETool.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A7D4A11FF61B8600597500 /* WMBLETool.m */; };
+		82A7D49B1FF4D2E300597500 /* XDBLECentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A7D49A1FF4D2E300597500 /* XDBLECentralManager.m */; };
+		82A7D49F1FF4E34B00597500 /* XDBLEPeripheral.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A7D49E1FF4E34B00597500 /* XDBLEPeripheral.m */; };
+		82A7D4A21FF61B8600597500 /* XDBLETool.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A7D4A11FF61B8600597500 /* XDBLETool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		8203579A202801CA008BA7F3 /* DeviceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceCell.m; sourceTree = "<group>"; };
 		8203579C20282CFD008BA7F3 /* BLEDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLEDetailVC.h; sourceTree = "<group>"; };
 		8203579D20282CFD008BA7F3 /* BLEDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLEDetailVC.m; sourceTree = "<group>"; };
+		828CC3FC20AEBF3200ACB516 /* BLE4_2speed.BIN */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = BLE4_2speed.BIN; sourceTree = "<group>"; };
 		82A7D4641FF4D2A000597500 /* WMBluetoothDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WMBluetoothDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82A7D4671FF4D2A000597500 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		82A7D4681FF4D2A000597500 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -60,13 +62,13 @@
 		82A7D4871FF4D2A000597500 /* WMBluetoothDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WMBluetoothDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		82A7D48B1FF4D2A000597500 /* WMBluetoothDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMBluetoothDemoUITests.m; sourceTree = "<group>"; };
 		82A7D48D1FF4D2A000597500 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		82A7D4991FF4D2E300597500 /* WMBLECentralManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMBLECentralManager.h; sourceTree = "<group>"; };
-		82A7D49A1FF4D2E300597500 /* WMBLECentralManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMBLECentralManager.m; sourceTree = "<group>"; };
-		82A7D49C1FF4D58300597500 /* WMBLEDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMBLEDefine.h; sourceTree = "<group>"; };
-		82A7D49D1FF4E34B00597500 /* WMBLEPeripheral.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMBLEPeripheral.h; sourceTree = "<group>"; };
-		82A7D49E1FF4E34B00597500 /* WMBLEPeripheral.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMBLEPeripheral.m; sourceTree = "<group>"; };
-		82A7D4A01FF61B8600597500 /* WMBLETool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMBLETool.h; sourceTree = "<group>"; };
-		82A7D4A11FF61B8600597500 /* WMBLETool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMBLETool.m; sourceTree = "<group>"; };
+		82A7D4991FF4D2E300597500 /* XDBLECentralManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDBLECentralManager.h; sourceTree = "<group>"; };
+		82A7D49A1FF4D2E300597500 /* XDBLECentralManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDBLECentralManager.m; sourceTree = "<group>"; };
+		82A7D49C1FF4D58300597500 /* XDBLEDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDBLEDefine.h; sourceTree = "<group>"; };
+		82A7D49D1FF4E34B00597500 /* XDBLEPeripheral.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDBLEPeripheral.h; sourceTree = "<group>"; };
+		82A7D49E1FF4E34B00597500 /* XDBLEPeripheral.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDBLEPeripheral.m; sourceTree = "<group>"; };
+		82A7D4A01FF61B8600597500 /* XDBLETool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDBLETool.h; sourceTree = "<group>"; };
+		82A7D4A11FF61B8600597500 /* XDBLETool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDBLETool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 		82A7D4661FF4D2A000597500 /* WMBluetoothDemo */ = {
 			isa = PBXGroup;
 			children = (
+				828CC3FC20AEBF3200ACB516 /* BLE4_2speed.BIN */,
 				82A7D4671FF4D2A000597500 /* AppDelegate.h */,
 				82A7D4681FF4D2A000597500 /* AppDelegate.m */,
 				82A7D46A1FF4D2A000597500 /* ViewController.h */,
@@ -125,13 +128,13 @@
 				8203579D20282CFD008BA7F3 /* BLEDetailVC.m */,
 				82035799202801CA008BA7F3 /* DeviceCell.h */,
 				8203579A202801CA008BA7F3 /* DeviceCell.m */,
-				82A7D49C1FF4D58300597500 /* WMBLEDefine.h */,
-				82A7D4A01FF61B8600597500 /* WMBLETool.h */,
-				82A7D4A11FF61B8600597500 /* WMBLETool.m */,
-				82A7D4991FF4D2E300597500 /* WMBLECentralManager.h */,
-				82A7D49A1FF4D2E300597500 /* WMBLECentralManager.m */,
-				82A7D49D1FF4E34B00597500 /* WMBLEPeripheral.h */,
-				82A7D49E1FF4E34B00597500 /* WMBLEPeripheral.m */,
+				82A7D49C1FF4D58300597500 /* XDBLEDefine.h */,
+				82A7D4A01FF61B8600597500 /* XDBLETool.h */,
+				82A7D4A11FF61B8600597500 /* XDBLETool.m */,
+				82A7D4991FF4D2E300597500 /* XDBLECentralManager.h */,
+				82A7D49A1FF4D2E300597500 /* XDBLECentralManager.m */,
+				82A7D49D1FF4E34B00597500 /* XDBLEPeripheral.h */,
+				82A7D49E1FF4E34B00597500 /* XDBLEPeripheral.m */,
 				82A7D46D1FF4D2A000597500 /* Main.storyboard */,
 				82A7D4701FF4D2A000597500 /* Assets.xcassets */,
 				82A7D4721FF4D2A000597500 /* LaunchScreen.storyboard */,
@@ -273,6 +276,7 @@
 				82A7D4741FF4D2A000597500 /* LaunchScreen.storyboard in Resources */,
 				82A7D4711FF4D2A000597500 /* Assets.xcassets in Resources */,
 				82A7D46F1FF4D2A000597500 /* Main.storyboard in Resources */,
+				828CC3FD20AEBF3300ACB516 /* BLE4_2speed.BIN in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,9 +305,9 @@
 				82A7D4771FF4D2A000597500 /* main.m in Sources */,
 				8203579B202801CA008BA7F3 /* DeviceCell.m in Sources */,
 				82A7D4691FF4D2A000597500 /* AppDelegate.m in Sources */,
-				82A7D49B1FF4D2E300597500 /* WMBLECentralManager.m in Sources */,
-				82A7D49F1FF4E34B00597500 /* WMBLEPeripheral.m in Sources */,
-				82A7D4A21FF61B8600597500 /* WMBLETool.m in Sources */,
+				82A7D49B1FF4D2E300597500 /* XDBLECentralManager.m in Sources */,
+				82A7D49F1FF4E34B00597500 /* XDBLEPeripheral.m in Sources */,
+				82A7D4A21FF61B8600597500 /* XDBLETool.m in Sources */,
 				8203579E20282CFD008BA7F3 /* BLEDetailVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,6 +474,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TKVWCL3VFY;
 				INFOPLIST_FILE = WMBluetoothDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.heaton.bluelight.WMBluetoothDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -484,6 +489,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TKVWCL3VFY;
 				INFOPLIST_FILE = WMBluetoothDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.heaton.bluelight.WMBluetoothDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

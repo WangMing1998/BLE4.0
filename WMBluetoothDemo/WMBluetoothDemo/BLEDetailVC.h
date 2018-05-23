@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WMBLEPeripheral.h"
+#import "XDBLEPeripheral.h"
 @interface BLEDetailVC : UIViewController
-@property(nonatomic,strong) WMBLEPeripheral *currenPeripheral;
+@property(nonatomic,strong) XDBLEPeripheral *currenPeripheral;
 @end
