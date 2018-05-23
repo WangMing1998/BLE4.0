@@ -1,4 +1,9 @@
 
+
+
+
+
+
 // 连接成功
 [XDBLETool shareInstance].bleConnectedPeripheralBlock = ^(CBCentralManager *central, XDBLEPeripheral *peripheral) {
         NSLog(@"连接成功");
